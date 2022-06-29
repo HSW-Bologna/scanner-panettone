@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+        "${workspaceFolder}/main/view/**",
+        "${workspaceFolder}/main/model/**",
+        "${workspaceFolder}/main/controller/**",
+        "${workspaceFolder}/main/peripherals/**",
+        "${workspaceFolder}/components/**"
+      ],
+      "defines": ["LV_CONF_INCLUDE_SIMPLE"],
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-x64",
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "${workspaceFolder}/main",
+          "${workspaceFolder}/components/**",
+          "${workspaceFolder}/**"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "compileCommands": "${workspaceFolder}/compile_commands.json"
+    }
+  ],
+  "version": 4
+}

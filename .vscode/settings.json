@@ -1,0 +1,11 @@
+{
+    "python.formatting.provider": "autopep8",
+    "files.associations": {
+        "timer.h": "c",
+        "timecheck.h": "c",
+        "model.h": "c",
+        "controller.h": "c",
+        "digout.h": "c"
+    },
+    "python.pythonPath": "/home/maldus/Projects/Rotondi/Paperoga.X/.env/bin/python3.9"
+}

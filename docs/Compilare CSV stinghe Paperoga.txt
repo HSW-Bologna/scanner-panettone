@@ -1,0 +1,7 @@
+Per compilare csv stringne 
+
+cartella progetto
+
+SHIFT + CLICK DX aprire "Apri Power Shell qui"
+
+digitare "scons intl"
