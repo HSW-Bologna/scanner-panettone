@@ -7,13 +7,14 @@
 
 
 typedef enum {
-    CH_VEL_CESTO = 1,
-    CH_VEL_VENTILAZIONE = 2,
-} ch_vel_pwm_da_tt;
+    PWM_CHANNEL_OUT_STEP_MOTORE_P,
+    PWM_CHANNEL_OUT_STEP_MOTORE_S,
+} pwm_channel_t;
+
 
 void pwm_init(void);
+void pwm_set(pwm_channel_t channel, uint16_t frequency);
+void pwm_off(pwm_channel_t channel);
 
-void pwm_set_test(uint8_t perc, uint8_t ch);
-void pwm_set(model_t *p, uint8_t vel, uint8_t ch);
 
 #endif

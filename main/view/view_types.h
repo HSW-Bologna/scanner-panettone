@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include "gel/keypad/keypad.h"
-#include "peripherals/led.h"
+
 
 #define VIEW_EMPTY_MSG                                                                                                 \
     ((view_message_t){.vmsg = {.code = VIEW_PAGE_COMMAND_CODE_NOTHING},                                                \
@@ -36,14 +36,6 @@ typedef struct {
 
 typedef enum {
     VIEW_CONTROLLER_COMMAND_CODE_NOTHING = 0,
-    VIEW_CONTROLLER_COMMAND_CODE_UPDATE_PWM,
-    VIEW_CONTROLLER_COMMAND_CODE_UPDATE_DIGOUT,
-    VIEW_CONTROLLER_COMMAND_CODE_DIGOUT_TURNOFF,
-    VIEW_CONTROLLER_COMMAND_CODE_PARAMETERS_SAVE,
-    VIEW_CONTROLLER_COMMAND_CODE_RESET_RAM,
-    VIEW_CONTROLLER_COMMAND_CODE_UPDATE_LED,
-    VIEW_CONTROLLER_COMMAND_CODE_UPDATE_CONTRAST,
-    VIEW_CONTROLLER_COMMAND_CODE_PRIVATE_PARAMETERS_SAVE,
 } view_controller_command_code_t;
 
 
@@ -54,7 +46,6 @@ typedef struct {
             int output;
             int value;
         };
-        led_color_t led;
     };
 } view_controller_command_t;
 
@@ -68,13 +59,8 @@ typedef uint8_t view_t;
 
 
 typedef enum {
-    VIEW_EVENT_SAVED,
     VIEW_EVENT_KEYPAD,
     VIEW_EVENT_MODEL_UPDATE,
-    VIEW_EVENT_COIN,
-    VIEW_EVENT_STATO_UPDATE,
-    VIEW_EVENT_STEP_UPDATE,
-    VIEW_EVENT_ALARM,
     VIEW_EVENT_CODE_TIMER,
 } view_event_code_t;
 

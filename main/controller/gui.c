@@ -17,8 +17,6 @@ void controller_manage_gui(model_t *model) {
     lv_mem_monitor_t mem_monitor;
 
     lv_task_handler();
-    lv_mem_monitor(&mem_monitor);
-    model_mem_data(model, &mem_monitor);
     
     if (last_invoked != get_millis()) {
         lv_tick_inc(time_interval(last_invoked, get_millis()));
@@ -35,7 +33,7 @@ void controller_manage_gui(model_t *model) {
     }
     
     if (is_expired(ts_refresh, get_millis(), 20000UL)) {
-        nt7534_reconfigure(model->hsw.contrasto);
+        nt7534_reconfigure(26);
         lv_obj_invalidate(lv_scr_act());
         ts_refresh = get_millis();
     }

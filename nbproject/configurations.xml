@@ -485,25 +485,9 @@
         <logicalFolder name="controller" displayName="controller" projectFiles="true">
           <itemPath>main/controller/gui.c</itemPath>
           <itemPath>main/controller/controller.c</itemPath>
-          <itemPath>main/controller/modbus_server.c</itemPath>
-          <itemPath>main/controller/ciclo.c</itemPath>
-          <itemPath>main/controller/gt_cesto.c</itemPath>
-          <itemPath>main/controller/gt_riscaldamento.c</itemPath>
-          <itemPath>main/controller/gt_ventilazione.c</itemPath>
-          <itemPath>main/controller/gt_allarmi.c</itemPath>
-          <itemPath>main/controller/gt_reset_bruciatore.c</itemPath>
-          <itemPath>main/controller/gt_macchina_occupata.c</itemPath>
-          <itemPath>main/controller/gt_presenza_aria.c</itemPath>
         </logicalFolder>
         <logicalFolder name="model" displayName="model" projectFiles="true">
-          <logicalFolder name="descriptions"
-                         displayName="descriptions"
-                         projectFiles="true">
-            <itemPath>main/model/descriptions/AUTOGEN_FILE_parmac.c</itemPath>
-          </logicalFolder>
           <itemPath>main/model/model.c</itemPath>
-          <itemPath>main/model/parmac.c</itemPath>
-          <itemPath>main/model/parciclo.c</itemPath>
         </logicalFolder>
         <logicalFolder name="peripherals" displayName="peripherals" projectFiles="true">
           <itemPath>main/peripherals/system.c</itemPath>
@@ -511,17 +495,11 @@
           <itemPath>main/peripherals/digin.c</itemPath>
           <itemPath>main/peripherals/i2c_devices.c</itemPath>
           <itemPath>main/peripherals/timer.c</itemPath>
-          <itemPath>main/peripherals/ptc.c</itemPath>
-          <itemPath>main/peripherals/pwoff.c</itemPath>
           <itemPath>main/peripherals/digout.c</itemPath>
           <itemPath>main/peripherals/keyboard.c</itemPath>
-          <itemPath>main/peripherals/temperature.c</itemPath>
-          <itemPath>main/peripherals/spi.c</itemPath>
           <itemPath>main/peripherals/pwm.c</itemPath>
-          <itemPath>main/peripherals/gettoniera.c</itemPath>
-          <itemPath>main/peripherals/uart_driver.c</itemPath>
           <itemPath>main/peripherals/traps.c</itemPath>
-          <itemPath>main/peripherals/led.c</itemPath>
+          <itemPath>main/peripherals/spi.c</itemPath>
         </logicalFolder>
         <logicalFolder name="utils" displayName="utils" projectFiles="true">
           <itemPath>main/utils/assert.c</itemPath>
@@ -535,56 +513,16 @@
             <itemPath>main/view/fonts/hsw6x8.c</itemPath>
           </logicalFolder>
           <logicalFolder name="images" displayName="images" projectFiles="true">
-            <itemPath>main/view/images/legacy_img_insert_coin.c</itemPath>
-            <itemPath>main/view/images/legacy_img_programs.c</itemPath>
-            <itemPath>main/view/images/legacy_img_warning.c</itemPath>
-            <itemPath>main/view/images/legacy_img_stop.c</itemPath>
-            <itemPath>main/view/images/legacy_img_program_caldo.c</itemPath>
-            <itemPath>main/view/images/legacy_img_program_tiepido.c</itemPath>
-            <itemPath>main/view/images/lgacy_img_program_medio.c</itemPath>
-            <itemPath>main/view/images/legacy_img_program_lana.c</itemPath>
-            <itemPath>main/view/images/legacy_img_program_freddo.c</itemPath>
-            <itemPath>main/view/images/legacy_img_logo_hoover.c</itemPath>
-            <itemPath>main/view/images/legacy_img_logo_ciao.c</itemPath>
-            <itemPath>main/view/images/legacy_img_logo_hsw.c</itemPath>
-            <itemPath>main/view/images/legacy_img_logo_msgroup.c</itemPath>
-            <itemPath>main/view/images/legacy_img_logo_rotondi.c</itemPath>
-            <itemPath>main/view/images/legacy_img_logo_schulthess.c</itemPath>
-            <itemPath>main/view/images/legacy_img_chiudere_oblo.c</itemPath>
-            <itemPath>main/view/images/legacy_img_aprire_oblo.c</itemPath>
-            <itemPath>main/view/images/legacy_img_raffreddamento.c</itemPath>
-            <itemPath>main/view/images/legacy_img_antipiega.c</itemPath>
           </logicalFolder>
           <logicalFolder name="intl" displayName="intl" projectFiles="true">
-            <itemPath>main/view/intl/intl.c</itemPath>
-            <itemPath>main/view/intl/AUTOGEN_FILE_strings.c</itemPath>
           </logicalFolder>
           <logicalFolder name="pages" displayName="pages" projectFiles="true">
             <itemPath>main/view/pages/page_main.c</itemPath>
-            <itemPath>main/view/pages/page_temperature_test.c</itemPath>
-            <itemPath>main/view/pages/page_digout_test.c</itemPath>
-            <itemPath>main/view/pages/page_digin_test.c</itemPath>
-            <itemPath>main/view/pages/page_pwm_test.c</itemPath>
-            <itemPath>main/view/pages/page_led_test.c</itemPath>
-            <itemPath>main/view/pages/page_parmac.c</itemPath>
-            <itemPath>main/view/pages/page_info.c</itemPath>
-            <itemPath>main/view/pages/page_scelta_programma.c</itemPath>
-            <itemPath>main/view/pages/page_parciclo.c</itemPath>
-            <itemPath>main/view/pages/page_splash.c</itemPath>
-            <itemPath>main/view/pages/page_reset_ram.c</itemPath>
-            <itemPath>main/view/pages/page_commissioning.c</itemPath>
-            <itemPath>main/view/pages/page_coin_test.c</itemPath>
-            <itemPath>main/view/pages/page_contrast.c</itemPath>
-            <itemPath>main/view/pages/page_stats.c</itemPath>
-            <itemPath>main/view/pages/page_ram_error.c</itemPath>
-            <itemPath>main/view/pages/page_adjust.c</itemPath>
-            <itemPath>main/view/pages/page_wait.c</itemPath>
           </logicalFolder>
           <logicalFolder name="widgets" displayName="widgets" projectFiles="true">
             <itemPath>main/view/widgets/custom_lv_img.c</itemPath>
           </logicalFolder>
           <itemPath>main/view/view.c</itemPath>
-          <itemPath>main/view/common.c</itemPath>
           <itemPath>main/view/styles.c</itemPath>
         </logicalFolder>
         <itemPath>main/main.c</itemPath>
@@ -596,6 +534,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>main/peripherals</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -606,12 +547,14 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.35</languageToolchainVersion>
-        <platform>3</platform>
+        <languageToolchainVersion>1.36</languageToolchainVersion>
+        <platform>2</platform>
       </toolsSet>
       <packs>
         <pack name="PIC24F-GA-GB_DFP" vendor="Microchip" version="1.3.109"/>
       </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
       <compileType>
         <linkerTool>
           <linkerLibItems>
@@ -629,6 +572,7 @@
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
@@ -916,6 +860,78 @@
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD4Tool>
+      <Tool>
+        <property key="ADC 1" value="true"/>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="CLC 1" value="true"/>
+        <property key="CLC 2" value="true"/>
+        <property key="COMPARATOR" value="true"/>
+        <property key="CRC" value="true"/>
+        <property key="CTMU" value="true"/>
+        <property key="DMA" value="true"/>
+        <property key="Freeze All Other Peripherals" value="true"/>
+        <property key="I2C 1" value="true"/>
+        <property key="I2C 2" value="true"/>
+        <property key="INPUT CAPTURE 1" value="true"/>
+        <property key="INPUT CAPTURE 2" value="true"/>
+        <property key="INPUT CAPTURE 3" value="true"/>
+        <property key="IOC" value="true"/>
+        <property key="LVD" value="true"/>
+        <property key="MCCP/SCCP 1" value="true"/>
+        <property key="MCCP/SCCP 2" value="true"/>
+        <property key="MCCP/SCCP 3" value="true"/>
+        <property key="MCCP/SCCP 4" value="true"/>
+        <property key="OSC" value="true"/>
+        <property key="OUTPUT COMPARE 1" value="true"/>
+        <property key="OUTPUT COMPARE 2" value="true"/>
+        <property key="OUTPUT COMPARE 3" value="true"/>
+        <property key="PMP" value="true"/>
+        <property key="REFO" value="true"/>
+        <property key="RTCC" value="true"/>
+        <property key="SPI 1" value="true"/>
+        <property key="SPI 2" value="true"/>
+        <property key="SPI 3" value="true"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="TIMER 1" value="true"/>
+        <property key="TIMER 2" value="true"/>
+        <property key="TIMER 3" value="true"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="UART 1" value="true"/>
+        <property key="UART 2" value="true"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
+        <property key="hwtoolclock.frcindebug" value="false"/>
+        <property key="memories.aux" value="false"/>
+        <property key="memories.bootflash" value="false"/>
+        <property key="memories.configurationmemory" value="true"/>
+        <property key="memories.configurationmemory2" value="true"/>
+        <property key="memories.dataflash" value="true"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.flashdata" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.instruction.ram" value="true"/>
+        <property key="memories.instruction.ram.ranges"
+                  value="${memories.instruction.ram.ranges}"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.ranges" value="0-2aeff"/>
+        <property key="poweroptions.powerenable" value="false"/>
+        <property key="programoptions.donoteraseauxmem" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges" value=""/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveeeprom.ranges" value=""/>
+        <property key="programoptions.preserveprogram.ranges" value=""/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.programcalmem" value="false"/>
+        <property key="programoptions.programuserotp" value="false"/>
+        <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
+        <property key="programoptions.usehighvoltageonmclr" value="false"/>
+        <property key="programoptions.uselvpprogramming" value="false"/>
+        <property key="voltagevalue" value="3.25"/>
+      </Tool>
       <item path="components/SPI/spi_ports/dummy/dummy_spi_port.c"
             ex="true"
             overriding="false">
