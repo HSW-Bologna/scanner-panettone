@@ -5,4 +5,5 @@
 void model_init(model_t *pmodel) {
     assert(pmodel != NULL);
     pmodel->inputs = 0;
+    pmodel->state = 0;
 }

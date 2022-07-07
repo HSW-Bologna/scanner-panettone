@@ -14,7 +14,6 @@ void controller_manage_gui(model_t *model) {
 
     view_message_t umsg;
     view_event_t   event;
-    lv_mem_monitor_t mem_monitor;
 
     lv_task_handler();
     

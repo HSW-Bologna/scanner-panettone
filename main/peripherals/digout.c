@@ -27,19 +27,19 @@ void digout_init(void) {
 }
 
 
-void rele_update(rele_t rele, int val) {
+void digout_update(digout_t rele, int val) {
     val = val > 0;
     switch (rele) {
-        case DIGOUT_OUT2:
-            RELE2_LAT = val;
-            break;
-        case DIGOUT_OUT3:
+        case DIGOUT_ENABLE_SCANNER_MOTOR:
             RELE3_LAT = val;
             break;
-        case DIGOUT_OUT4:
+        case DIGOUT_ENABLE_ROTATION_MOTOR:
             RELE4_LAT = val;
             break;
-        case DIGOUT_OUT5:
+        case DIGOUT_DIRECTION_SCANNER_MOTOR:
+            RELE2_LAT = val;
+            break;
+        case DIGOUT_DIRECTION_ROTATION_MOTOR:
             RELE5_LAT = val;
             break;
         default:
@@ -47,7 +47,7 @@ void rele_update(rele_t rele, int val) {
     }
 }
 
-uint8_t rele_get_status(void) {
+uint8_t digout_get_status(void) {
     uint8_t res = 0;
     res |= RELE2_LAT << 1;
     res |= RELE3_LAT << 2;
@@ -56,15 +56,15 @@ uint8_t rele_get_status(void) {
     return res;
 }
 
-uint8_t rele_get(rele_t rele) {
+uint8_t digout_get(digout_t rele) {
     switch (rele) {
-        case DIGOUT_OUT2:
-            return RELE2_LAT;
-        case DIGOUT_OUT3:
+        case DIGOUT_ENABLE_SCANNER_MOTOR:
             return RELE3_LAT;
-        case DIGOUT_OUT4:
+        case DIGOUT_ENABLE_ROTATION_MOTOR:
             return RELE4_LAT;
-        case DIGOUT_OUT5:
+        case DIGOUT_DIRECTION_SCANNER_MOTOR:
+            return RELE2_LAT;
+        case DIGOUT_DIRECTION_ROTATION_MOTOR:
             return RELE5_LAT;
         default:
             return 0;

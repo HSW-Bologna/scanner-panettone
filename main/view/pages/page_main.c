@@ -16,12 +16,13 @@ enum {
     PERIODIC_TASK_ID,
 };
 
+static void update_page(model_t *pmodel) ;
 
 static struct { 
     lv_task_t *task;
     
-    lv_obj_t *lbl_pwm1;
-    lv_obj_t *lbl_pwm2;
+    lv_obj_t *lbl;
+    lv_obj_t *lbl_state;
 
     pwm_channel_t channel;
 } page_data;
@@ -37,16 +38,19 @@ static void *create_page(model_t *model, void *extra) {
 
 static void open_page(model_t *model, void *data) {
     lv_task_set_prio(page_data.task, LV_TASK_PRIO_MID);
+    lv_obj_t *lbl;
     
-    lv_obj_t *lbl = lv_label_create(lv_scr_act(), NULL);
-    lv_obj_align(lbl, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
-    lv_label_set_body_draw(lbl, 1);
-    page_data.lbl_pwm1 = lbl;
+    lbl = lv_label_create(lv_scr_act(), NULL);
+    lv_obj_set_auto_realign(lbl, 1);
+    lv_obj_align(lbl, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 0, 0);
+    page_data.lbl = lbl;
     
-    lv_obj_t *lbl = lv_label_create(lv_scr_act(), NULL);
-    lv_obj_align(lbl, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 8);
-    lv_label_set_body_draw(lbl, 1);
-    page_data.lbl_pwm2 = lbl;
+    lbl = lv_label_create(lv_scr_act(), NULL);
+    lv_obj_set_auto_realign(lbl, 1);
+    lv_obj_align(lbl, NULL, LV_ALIGN_CENTER, 0, 0);
+    page_data.lbl_state = lbl;
+    
+    update_page(model);
 }
 
 
@@ -110,6 +114,10 @@ static view_message_t process_page_event(model_t *model, void *arg, pman_event_t
         {
             break;
         }
+        
+        case VIEW_EVENT_MODEL_UPDATE:
+            update_page(model);
+            break;
 
         default:
             break;
@@ -119,18 +127,9 @@ static view_message_t process_page_event(model_t *model, void *arg, pman_event_t
 }
 
 
-static void update_page(void) {
-    switch (page_data.channel) {
-        case PWM_CHANNEL_OUT_STEP_MOTORE_P:
-            lv_obj_set_style(page_data.lbl_pwm1, style_label_reverse);
-            lv_obj_set_style(page_data.lbl_pwm2, style_label_normal);
-            break;
-            
-        case PWM_CHANNEL_OUT_STEP_MOTORE_P:
-            lv_obj_set_style(page_data.lbl_pwm2, style_label_reverse);
-            lv_obj_set_style(page_data.lbl_pwm1, style_label_normal);
-            break;
-    }
+static void update_page(model_t *pmodel) {
+    lv_label_set_text_fmt(page_data.lbl_state, "Stato %i", pmodel->state);
+    lv_label_set_text_fmt(page_data.lbl, "0x%02X", pmodel->inputs);
 }
 
 

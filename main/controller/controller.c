@@ -13,5 +13,6 @@ void controller_process_msg(view_controller_command_t *msg, model_t *pmodel) {
 
 
 void controller_init(model_t *pmodel) {
+    ciclo_init();
     view_change_page(pmodel, &page_main);
 }

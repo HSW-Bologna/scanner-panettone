@@ -6,6 +6,7 @@
 
 typedef struct {
     uint16_t inputs;
+    uint8_t state;
 } model_t;
 
 

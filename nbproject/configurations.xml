@@ -41,6 +41,11 @@
           <logicalFolder name="serializer" displayName="serializer" projectFiles="true">
             <itemPath>components/generic_embedded_libs/gel/serializer/serializer.h</itemPath>
           </logicalFolder>
+          <logicalFolder name="state_machine"
+                         displayName="state_machine"
+                         projectFiles="true">
+            <itemPath>components/generic_embedded_libs/gel/state_machine/state_machine.h</itemPath>
+          </logicalFolder>
           <logicalFolder name="timer" displayName="timer" projectFiles="true">
             <itemPath>components/generic_embedded_libs/gel/timer/stopwatch.h</itemPath>
             <itemPath>components/generic_embedded_libs/gel/timer/timecheck.h</itemPath>
@@ -227,16 +232,7 @@
         <logicalFolder name="controller" displayName="controller" projectFiles="true">
           <itemPath>main/controller/controller.h</itemPath>
           <itemPath>main/controller/gui.h</itemPath>
-          <itemPath>main/controller/modbus_server.h</itemPath>
-          <itemPath>main/controller/stato.h</itemPath>
           <itemPath>main/controller/ciclo.h</itemPath>
-          <itemPath>main/controller/gt_allarmi.h</itemPath>
-          <itemPath>main/controller/gt_cesto.h</itemPath>
-          <itemPath>main/controller/gt_riscaldamento.h</itemPath>
-          <itemPath>main/controller/gt_ventilazione.h</itemPath>
-          <itemPath>main/controller/gt_reset_bruciatore.h</itemPath>
-          <itemPath>main/controller/gt_macchina_occupata.h</itemPath>
-          <itemPath>main/controller/gt_presenza_aria.h</itemPath>
         </logicalFolder>
         <logicalFolder name="model" displayName="model" projectFiles="true">
           <itemPath>main/model/model.h</itemPath>
@@ -248,15 +244,10 @@
           <itemPath>main/peripherals/digout.h</itemPath>
           <itemPath>main/peripherals/keyboard.h</itemPath>
           <itemPath>main/peripherals/spi.h</itemPath>
-          <itemPath>main/peripherals/temperature.h</itemPath>
           <itemPath>main/peripherals/digin.h</itemPath>
           <itemPath>main/peripherals/i2c_devices.h</itemPath>
           <itemPath>main/peripherals/timer.h</itemPath>
-          <itemPath>main/peripherals/ptc.h</itemPath>
-          <itemPath>main/peripherals/pwoff.h</itemPath>
-          <itemPath>main/peripherals/gettoniera.h</itemPath>
           <itemPath>main/peripherals/pwm.h</itemPath>
-          <itemPath>main/peripherals/uart_driver.h</itemPath>
         </logicalFolder>
         <logicalFolder name="view" displayName="view" projectFiles="true">
           <logicalFolder name="fonts" displayName="fonts" projectFiles="true">
@@ -307,6 +298,10 @@
             <itemPath>components/generic_embedded_libs/gel/pid/pid.c</itemPath>
           </logicalFolder>
           <logicalFolder name="serializer" displayName="serializer" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="state_machine"
+                         displayName="state_machine"
+                         projectFiles="true">
           </logicalFolder>
           <logicalFolder name="timer" displayName="timer" projectFiles="true">
             <itemPath>components/generic_embedded_libs/gel/timer/stopwatch.c</itemPath>
@@ -485,6 +480,7 @@
         <logicalFolder name="controller" displayName="controller" projectFiles="true">
           <itemPath>main/controller/gui.c</itemPath>
           <itemPath>main/controller/controller.c</itemPath>
+          <itemPath>main/controller/ciclo.c</itemPath>
         </logicalFolder>
         <logicalFolder name="model" displayName="model" projectFiles="true">
           <itemPath>main/model/model.c</itemPath>
@@ -500,6 +496,7 @@
           <itemPath>main/peripherals/pwm.c</itemPath>
           <itemPath>main/peripherals/traps.c</itemPath>
           <itemPath>main/peripherals/spi.c</itemPath>
+          <itemPath>main/peripherals/uart_driver.c</itemPath>
         </logicalFolder>
         <logicalFolder name="utils" displayName="utils" projectFiles="true">
           <itemPath>main/utils/assert.c</itemPath>
@@ -536,6 +533,8 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>main/peripherals</Elem>
+    <Elem>main/controller</Elem>
+    <Elem>components/generic_embedded_libs/gel/state_machine</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

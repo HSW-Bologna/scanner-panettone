@@ -17,6 +17,8 @@
 #include "controller/gui.h"
 #include "peripherals/pwm.h"
 #include "controller/controller.h"
+#include "controller/ciclo.h"
+#include "peripherals/uart_driver.h"
 
 
 model_t model;
@@ -37,9 +39,10 @@ int main(void) {
     digin_init();
     timer_init();
     pwm_init();
+
+    uart_init();
     
-    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_P, 1000);
-    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_S, 10000);
+    clear_digout_all();
 
     model_init(&model);
     view_init(&model, nt7534_flush, nt7534_rounder, nt7534_set_px, keyboard_reset);
@@ -56,9 +59,9 @@ int main(void) {
 
         if (is_expired(ts_input, get_millis(), 2)) {
             if (digin_take_reading()) {
-                view_event((view_event_t){.code = VIEW_EVENT_MODEL_UPDATE});
-
                 model.inputs = digin_get_inputs();
+                ciclo_manage_inputs(&model);
+                view_event((view_event_t){.code = VIEW_EVENT_MODEL_UPDATE});
             }
 
             ts_input = get_millis();

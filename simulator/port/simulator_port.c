@@ -15,13 +15,13 @@ void digout_buzzer_bip(size_t r, unsigned long t_on, unsigned long t_off) {}
 
 void digout_buzzer_stop(void) {}
 
-void rele_set(rele_t rele, int val) {}
+void rele_set(digout_t rele, int val) {}
 
 void pwm_set(uint8_t perc) {}
 
 void digout_buzzer_set_off(void) {}
 
-uint8_t rele_get_status(void) {
+uint8_t digout_get_status(void) {
     return 0;
 }
 
@@ -56,4 +56,4 @@ void pwoff_interrupt_enable(int i) {}
 
 void pwoff_set_callback(void (*cb)()) {}
 
-void rele_update(rele_t rele, int val) {}
+void digout_update(digout_t rele, int val) {}
