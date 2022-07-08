@@ -12,11 +12,7 @@
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
-            <sourceRootList>
-                <sourceRootElem>main/peripherals</sourceRootElem>
-                <sourceRootElem>main/controller</sourceRootElem>
-                <sourceRootElem>components/generic_embedded_libs/gel/state_machine</sourceRootElem>
-            </sourceRootList>
+            <sourceRootList/>
             <confList>
                 <confElem>
                     <name>default</name>

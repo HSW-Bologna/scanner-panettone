@@ -20,53 +20,53 @@
 #include "controller/ciclo.h"
 #include "peripherals/uart_driver.h"
 
-
 model_t model;
+
 
 
 int main(void) {
     unsigned long tskp = 0, ts_input = 0;
-
+    
     // inizializzazioni ----------------------- //
     system_init();
-
+    
     spi_init();
     nt7534_init();
     digout_init();
     keyboard_init();
-
+    
     i2c_bitbang_init(2);
     digin_init();
     timer_init();
     pwm_init();
-
+    
     uart_init();
     
     clear_digout_all();
-
+    
     model_init(&model);
     view_init(&model, nt7534_flush, nt7534_rounder, nt7534_set_px, keyboard_reset);
-
+    
     controller_init(&model);
-
+    
     digout_buzzer_bip(2, 100, 100);
 
     // MAIN LOOP ============================================================ //
     for (;;) {
         controller_manage_gui(&model);
-
+        
         ClrWdt();
-
+        
         if (is_expired(ts_input, get_millis(), 2)) {
             if (digin_take_reading()) {
                 model.inputs = digin_get_inputs();
                 ciclo_manage_inputs(&model);
                 view_event((view_event_t){.code = VIEW_EVENT_MODEL_UPDATE});
             }
-
+            
             ts_input = get_millis();
         }
-
+        
         if (is_expired(tskp, get_millis(), 5)) {
             keypad_update_t update = keyboard_manage(get_millis());
 
@@ -75,7 +75,7 @@ int main(void) {
             }
             tskp = get_millis();
         }
-
+        
         // controllo buzzer
         digout_buzzer_check();
 

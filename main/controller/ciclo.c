@@ -8,13 +8,19 @@
 #include "peripherals/pwm.h"
 
 
+#define SCANNER_SPEED_R   4800      // 10s x 1scan
 #define SCANNER_SPEED     1000
+#define SCANNER_SPEED_1   400       // C1 - 120s x 1scan
 #define MOVING_SPEED      10000
+#define ROTATION_SPEED_R  12800     // 5s x 1rpm
 #define ROTATION_SPEED    2000
-#define QUARTER_TURN_TIME 500UL
+#define ROTATION_SPEED_1  8533      // C1 - 8rpm x 120s
+#define ROTATION_SPEED_2  3413      // C2 - 1rpm x / 30s
+
+#define QUARTER_TURN_TIME 3333UL    // C2 ms x 1/4scan  #  10s/1scan
 
 #define ENABLE_MOTOR 0
-#define SCANNER_UP 0
+#define SCANNER_UP 0500UL
 
 
 typedef enum {
@@ -113,14 +119,21 @@ int ciclo_manage_inputs(model_t *pmodel) {
 
 
 static void scanner_scan_up(void) {
-    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_S, SCANNER_SPEED);
+    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_S, SCANNER_SPEED_1);
     digout_update(DIGOUT_ENABLE_SCANNER_MOTOR, ENABLE_MOTOR);
     digout_update(DIGOUT_DIRECTION_SCANNER_MOTOR, SCANNER_UP);
 }
 
 
 static void scanner_scan_down(void) {
-    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_S, SCANNER_SPEED);
+    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_S, SCANNER_SPEED_R);
+    digout_update(DIGOUT_ENABLE_SCANNER_MOTOR, ENABLE_MOTOR);
+    digout_update(DIGOUT_DIRECTION_SCANNER_MOTOR, !SCANNER_UP);
+}
+
+
+static void scanner_scan_down_reset(void) {
+    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_S, SCANNER_SPEED_R);
     digout_update(DIGOUT_ENABLE_SCANNER_MOTOR, ENABLE_MOTOR);
     digout_update(DIGOUT_DIRECTION_SCANNER_MOTOR, !SCANNER_UP);
 }
@@ -153,14 +166,14 @@ static void scanner_hold(void) {
 
 
 static void rotate_left(void) {
-    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_P, ROTATION_SPEED);
+    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_P, ROTATION_SPEED_1);
     digout_update(DIGOUT_ENABLE_ROTATION_MOTOR, ENABLE_MOTOR);
     digout_update(DIGOUT_DIRECTION_ROTATION_MOTOR, 1);
 }
 
 
 static void rotate_right(void) {
-    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_P, ROTATION_SPEED);
+    pwm_set(PWM_CHANNEL_OUT_STEP_MOTORE_P, ROTATION_SPEED_R);
     digout_update(DIGOUT_ENABLE_ROTATION_MOTOR, ENABLE_MOTOR);
     digout_update(DIGOUT_DIRECTION_ROTATION_MOTOR, 0);
 }
@@ -178,7 +191,10 @@ static uint8_t upper_limit_reached(void) {
 
 
 static uint8_t lower_limit_reached(void) {
-    return digin_get(DIGIN_MICRO_S_BASSO) == 1;
+    if (digin_get(DIGIN_MICRO_S_BASSO)==1 && digin_get(DIGIN_MICRO_S_BASSO)==1)
+        return  1;
+    else
+        return -1;
 }
 
 
@@ -203,16 +219,16 @@ static int off_event_manager(model_t *pmodel, ciclo_event_t event) {
                 digout_buzzer_bip(2, 200, 100);
                 return -1;
             }
-
+            
         case CICLO_EVENT_RESET:
             if (lower_limit_reached()) {
                 return -1;
             } else {
-                rotate_left();
+                rotate_right ();
                 scanner_scan_down();
                 return CICLO_STATE_RESETTING;
             }
-
+            
         default:
             return -1;
     }
