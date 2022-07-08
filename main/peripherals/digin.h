@@ -17,6 +17,7 @@ typedef enum {
     DIGIN_IN4,
     DIGIN_IN5,
     DIGIN_IN6,
+    DIGIN_IN7,
 } digin_t;
 
 

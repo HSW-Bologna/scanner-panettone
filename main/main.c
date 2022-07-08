@@ -58,6 +58,8 @@ int main(void) {
         ClrWdt();
         
         if (is_expired(ts_input, get_millis(), 2)) {
+            ciclo_manage_timers(&model);
+            
             if (digin_take_reading()) {
                 model.inputs = digin_get_inputs();
                 ciclo_manage_inputs(&model);

@@ -13,6 +13,7 @@ typedef enum {
 
 int ciclo_manage_inputs(model_t *pmodel);
 void ciclo_init(void);
+void ciclo_manage_timers(model_t *pmodel);
 
 
 #endif
